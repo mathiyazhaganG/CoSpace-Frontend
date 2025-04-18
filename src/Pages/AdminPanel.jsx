@@ -8,7 +8,7 @@ const AdminPanel = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch bookings when the component mounts
+    // Fetch bookings from the API
     const fetchBookings = async () => {
       try {
         const response = await axios.get(`${process.env.BASE_API}/bookings`, { withCredentials: true });
@@ -61,7 +61,7 @@ const AdminPanel = () => {
                 key={booking._id}
                 className="hover:bg-gray-50 transition duration-200 ease-in-out"
               >
-                <td className="py-4 px-6 border-b text-sm text-gray-700">{new Date(booking.date).toLocaleDateString()}</td>
+                <td className="py-4 px-6 border-b text-sm text-gray-700">{new Date(booking.date).toLocaleDateString('en-GB')}</td>
                 <td className="py-4 px-6 border-b text-sm text-gray-700">{booking.timeSlot}</td>
                 <td className="py-4 px-6 border-b text-sm text-gray-700">{booking.user.name}</td>
                 <td className="py-4 px-6 border-b text-sm text-gray-700">{booking.seat.seatNumber}</td>
