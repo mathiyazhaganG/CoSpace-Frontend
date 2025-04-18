@@ -156,21 +156,29 @@ const BookingSeat = () => {
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Time Slot</label>
-          <select
-            name="timeSlot"
-            value={formData.timeSlot}
-            onChange={handleChange}
-            className="w-full border px-4 py-2 rounded-lg shadow-sm"
-            required
-          >
-            <option value="">-- Select --</option>
-            <option value="9AM - 12PM">9AM - 12PM</option>
-            <option value="1PM - 4PM">1PM - 4PM</option>
-            <option value="5PM - 8PM">5PM - 8PM</option>
-          </select>
-        </div>
+        <div className="mb-4">
+  <label className="block text-sm font-medium text-indigo-600 mb-2">Select Time Slot</label>
+  <div className="relative">
+    <select
+      name="timeSlot"
+      value={formData.timeSlot}
+      onChange={handleChange}
+      className="w-full border border-gray-300 px-4 py-3 rounded-lg shadow-sm appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+      required
+    >
+      <option value="">-- Select a Time Slot --</option>
+      <option value="9AM - 12PM">Morning: 9AM - 12PM</option>
+      <option value="1PM - 4PM">Afternoon: 1PM - 4PM</option>
+      <option value="5PM - 8PM">Evening: 5PM - 8PM</option>
+      <option value="Full Day">Full Day (9AM - 8PM)</option>
+    </select>
+    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-indigo-600">
+      <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+      </svg>
+    </div>
+  </div>
+</div>
 
         <button
           type="button"
@@ -179,26 +187,48 @@ const BookingSeat = () => {
         >
           Check Available Seats
         </button>
-
-        {availableSeats.length > 0 && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Available Seats</label>
-            <select
-              name="seatId"
-              value={formData.seatId}
-              onChange={handleChange}
-              className="w-full border px-4 py-2 rounded-lg shadow-sm"
-              required
-            >
-              <option value="">-- Select --</option>
-              {availableSeats.map((seat) => (
-                <option key={seat._id} value={seat._id}>
-                  Seat {seat.seatNumber}
-                </option>
-              ))}
-            </select>
+        {availableSeats.length > 0 ? (
+  <div className="mb-4">
+    <label className="block text-sm font-medium text-indigo-600 mb-2">Available Seats</label>
+    <div className="relative">
+      <select
+        name="seatId"
+        value={formData.seatId}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-4 py-3 rounded-lg shadow-sm appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+        required
+      >
+        <option value="">-- Select a Seat --</option>
+        {availableSeats.map((seat) => (
+          <option key={seat._id} value={seat._id}>
+            Seat {seat.seatNumber}
+          </option>
+        ))}
+      </select>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-indigo-600">
+        <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+        </svg>
+      </div>
+    </div>
+  </div>
+) : (
+  <div className="mb-4">
+    <div className="rounded-lg border border-yellow-300 bg-yellow-50 p-4">
+      <div className="flex items-center">
+        <svg className="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+        </svg>
+        <div className="ml-3">
+          <h3 className="text-sm font-medium text-yellow-800">No Available Seats</h3>
+          <div className="mt-2 text-sm text-yellow-700">
+            <p>There are currently no seats available for the selected time slot. Please try selecting a different time or check back later.</p>
           </div>
-        )}
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
         <button
           type="submit"
