@@ -50,7 +50,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Provider store={store}>
+    
       <BrowserRouter>
         <Routes>
           {/* Auth route */}
@@ -67,16 +67,16 @@ const App = () => {
             <Route path="/home" element={<Home />} errorElement={<Error />} />
 			<Route path="/user/:id" element={<MyBookings/>} errorElement={<Error />} />
 			<Route path="/book/:id" element={< BookingSeat/>} errorElement={<Error />} />
-            <Route path="/" element={<Navigate to="/home" />} />
-			<Route path="/admin" element={<AdminPanel/>}/>
-			<Route path="/admin/createSpace" element={<CreateSpace/>}/>
+            <Route path="/" element={<Navigate to="/home" />} errorElement={<Error />}/>
+			<Route path="/admin" element={<AdminPanel/>} errorElement={<Error />}/>
+			<Route path="/admin/createSpace" element={<CreateSpace/>} errorElement={<Error />}/>
           </Route>
 
           {/* Global error handling */}
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
-    </Provider>
+    
   );
 };
 

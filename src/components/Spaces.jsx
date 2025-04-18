@@ -54,7 +54,7 @@ function Spaces() {
 
 			  {user?.role !== 'admin' && (
                 <button
-                  onClick={() => navigate(`/book/${space._id}`)} // Pass the space ID in the URL
+                  onClick={() => navigate(`/book/${space._id}`)} 
                   className="mt-4 w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700"
                 >
                   Book a Seat

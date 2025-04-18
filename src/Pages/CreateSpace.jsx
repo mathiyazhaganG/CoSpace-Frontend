@@ -27,7 +27,7 @@ const CreateSpace = () => {
     const formattedData = {
       ...formData,
       amenities: formData.amenities.split(',').map((item) => item.trim()),
-      images: [formData.imageUrl], // assuming backend expects an array
+      images: [formData.imageUrl], 
     };
 
     try {

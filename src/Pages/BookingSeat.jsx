@@ -30,7 +30,6 @@ const BookingSeat = () => {
           if (found) {
             setSelectedSpace(found);
             setFormData((prev) => ({ ...prev, spaceId: found._id }));
-            console.log('Found Space:', found); 
           } else {
             toast.error('Invalid space ID from URL');
           }

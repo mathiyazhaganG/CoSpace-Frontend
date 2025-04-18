@@ -66,7 +66,7 @@ function CoSpaceAuth() {
         });
 
         // Navigate based on user role
-        const userRole = response.data.user.role; // Corrected access to user role
+        const userRole = response.data.user.role; 
         if (userRole === 'admin') {
           navigate('/admin');
         } else {
@@ -79,9 +79,18 @@ function CoSpaceAuth() {
           email,
           password,
         });
+        // Navigate to login page after successful signup
+        
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
+       
+        
+        
+      
       }
-
-      // Handle successful authentication
+      
+      
       const data = response.data;
 
       // Dispatch user data to Redux store
